@@ -14,7 +14,7 @@ function Home({focusInSearch,setFocusInSearch}) {
   const fetchSearchData = async() => {
 
     try {
-      var response = await fetch('https://fakestoreapi.com/products')
+      var response = await fetch('https://api.escuelajs.co/api/v1/products')
       response = await response.json()
       setSearchData(response)
     } catch (error) {
@@ -28,11 +28,13 @@ function Home({focusInSearch,setFocusInSearch}) {
     if (!search){
       setFilteredData(searchData)
     }else{
-
-      const newData = searchData.filter((item) => {
-          return item.title.includes(search)
-       })
-       setFilteredData(newData)
+      try {
+        var response = await fetch(`https://api.escuelajs.co/api/v1/products/?title=${search}`)
+        response = await response.json()
+        setFilteredData(response)
+      } catch (error) {
+        console.log(error)
+      }
     }
 
     setShowResult(true)
@@ -44,12 +46,12 @@ function Home({focusInSearch,setFocusInSearch}) {
   },[])
 
   return (
-    <div className="">
-      <Header />
+    <div className={`relative `}>
+      <Header showResult={showResult}/>
 
       {/* SEARCH BAR AND ITS SUGGESTION DIV */}
-      <div className="relative flex justify-center flex-col items-center">
-          <SearchBar setFocusInSearch={setFocusInSearch} setSearch = {setSearch} search={search} handleSubmit={handleSubmit}/>
+      <div className={`flex justify-center flex-col items-center absolute ${!showResult?"top-20":"top-3"}`} >
+          <SearchBar setFocusInSearch={setFocusInSearch} setSearch = {setSearch} search={search} handleSubmit={handleSubmit} border="border"/>
           <Suggestion visibility={focusInSearch}/>
       </div>
 
@@ -57,7 +59,6 @@ function Home({focusInSearch,setFocusInSearch}) {
       <div className={`${showResult?"":"hidden"}`}>
           <SearchResult filteredData={filteredData} setFilteredData={setFilteredData}/>
       </div>
-      <Footer />
     </div>
   );
 }

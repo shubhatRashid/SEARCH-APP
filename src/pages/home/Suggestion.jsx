@@ -7,14 +7,14 @@ const Suggestion = ({visibility}) => {
 
   // FETCH DATA FOR LATEST TRENDING DIV
   const fetchData = async() => {
-    var response = await fetch('https://fakestoreapi.com/products?limit=7')
+    var response = await fetch('https://api.escuelajs.co/api/v1/categories')
     response = await response.json()
     setData(response)
   }
 
   // FETCH DATA FOR POPULAR SEARCHES DIV
   const fetchSearches = async() => {
-    var response = await fetch('https://fakestoreapi.com/products/categories')
+    var response = await fetch('https://api.escuelajs.co/api/v1/categories')
     response = await response.json()
     setSearches(response)
   }
@@ -33,9 +33,12 @@ const Suggestion = ({visibility}) => {
           <p className='font-sans text-lg mb-[2%]'>Latest Trends</p>
           <div className='flex mx-[1%] overflow-x-auto'>
               {
-                data.map((item,index) => (
-                  <SuggestionCard  key={index} source={item.image} category={item.category} />
-                ))
+                data.map((item,index) => {
+                  if (index < 5){
+                    return <SuggestionCard  key={index} source={item.image} category={item.name} />
+                  }
+                  
+              })
               }
           </div>
         </div>
@@ -43,9 +46,12 @@ const Suggestion = ({visibility}) => {
         {/* POPULAR TRENDS DIV */}
         <div className='flex flex-col m-[2%]'>
           <p className='font-sans text-lg mb-[2%]'>Popular Suggestions</p>
-          {popularSearches.map((value,index) => (
-            <p className="text-sm font-sans capitalize m-[0.5%]" key={index}>{value}</p>
-          ))}
+          {popularSearches.map((value,index) => {
+            if (index < 5){
+              return <p className="text-sm font-sans capitalize m-[0.5%]" key={index}>{value.name}</p>
+            }
+            
+          })}
 
         </div>
 

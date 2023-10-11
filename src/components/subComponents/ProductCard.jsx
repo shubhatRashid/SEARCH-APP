@@ -14,12 +14,12 @@ const ProductCard = ({details}) => {
     }
 
   return (
-    <div className=' m-[2%] py-[4%] rounded flex flex-col gap-2 justify-end items-center font-sans bg-white border rounded relative'>
+    <div className=' m-[2%] p-[4%] rounded flex flex-col gap-2 justify-end items-center font-sans bg-white border rounded relative max-h-[400px]'>
         <div className='absolute top-2 right-2 fill-current '>
            <button onClick={changeColor} >{likeColor}</button>
         </div>
 
-        <img className='bg-white max-h-[200px] min-w-[150px]' src={details.image} />
+        <img className='bg-white ' src={details.images[0]} />
         <div className='flex w-[100%] justify-start px-[5%]'>
             <p className='text-xs capitalize m-[1%] '>RS {details.title}</p>
         </div>
@@ -31,10 +31,10 @@ const ProductCard = ({details}) => {
 
         <div className='flex w-[100%] justify-start px-[5%]'>
             {
-                [...Array(Math.floor(details.rating.rate))].map((e, i) => <span className=" text-sm" key={i}>⭐</span>)
+                [...Array(Math.floor((Math.random() * 5)+1))].map((e, i) => <span className=" text-sm" key={i}>⭐</span>)
             }
-            <p className='text-sm'>{`(${details.rating.count})`}</p>    
-        </div>
+            <p className='text-sm'>{`(${Math.floor(Math.random() * 100)})`}</p>    
+        </div> 
         
         
     </div>
