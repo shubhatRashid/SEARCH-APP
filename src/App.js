@@ -1,15 +1,21 @@
-import React from "react";
-import {Header,SearchBar,SearchResult,Suggestion,Footer} from "./components/mainComponents"
-function App() {
+import React,{useState} from 'react'
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom"
+import "./index.css"
+import Home from './pages/home/Home'
+
+const App = () => {
+  const [focusInSearch,setFocusInSearch] = useState(false)
   return (
-    <div>
-      <Header />
-      <SearchBar />
-      <Suggestion />
-      <SearchResult />
-      <Footer />
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+          <Route path = "/" element = {<Home focusInSearch = {focusInSearch} setFocusInSearch = {setFocusInSearch}/>}/>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
