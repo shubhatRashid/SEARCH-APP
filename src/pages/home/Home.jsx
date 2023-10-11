@@ -12,31 +12,37 @@ function Home({focusInSearch,setFocusInSearch}) {
 
   // FETCH DATA FOR LATEST TRENDING DIV
   const fetchSearchData = async() => {
-    var response = await fetch('https://fakestoreapi.com/products')
-    response = await response.json()
-    setSearchData(response)
+
+    try {
+      var response = await fetch('https://fakestoreapi.com/products')
+      response = await response.json()
+      setSearchData(response)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(search)
-    if (search === " "){
+
+    if (!search){
       setFilteredData(searchData)
-      return;
+    }else{
+
+      const newData = searchData.filter((item) => {
+          return item.title.includes(search)
+       })
+       setFilteredData(newData)
     }
 
-    const newData = searchData.filter((item) => {
-      console.log(search)
-      console.log(item.title)
-      return item.title.includes(search)
-    })
     setShowResult(true)
-    setFilteredData(newData)
+    
   }
   
   useEffect(() => {
     fetchSearchData()
-  })
+  },[])
+
   return (
     <div className="">
       <Header />
@@ -49,7 +55,7 @@ function Home({focusInSearch,setFocusInSearch}) {
 
       {/* SEARCH RESULT DIV */}
       <div className={`${showResult?"":"hidden"}`}>
-          <SearchResult searchData={filteredData}/>
+          <SearchResult filteredData={filteredData} setFilteredData={setFilteredData}/>
       </div>
       <Footer />
     </div>
