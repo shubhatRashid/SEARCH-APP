@@ -37,7 +37,7 @@ const FilterDiv = ({showFilterDiv,filteredData ,setFilteredData}) => {
   },[filteredData])
 
   return (
-    <div className={`${showFilterDiv?"":"hidden"} min-w-[20%]`}> 
+    <div className={`min-w-[20%]`}> 
         <form className='font-sans text-sm capitalize' onSubmit={handleSubmit}>
 
             {/* FILTER BY CATEGORY */}

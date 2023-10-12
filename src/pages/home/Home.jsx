@@ -46,11 +46,11 @@ function Home({focusInSearch,setFocusInSearch}) {
   },[])
 
   return (
-    <div className={`relative `}>
+    <div className={`relative flex flex-col justify-center items-center `}>
       <Header showResult={showResult}/>
 
       {/* SEARCH BAR AND ITS SUGGESTION DIV */}
-      <div className={`flex justify-center flex-col items-center absolute ${!showResult?"top-20":"top-3"}`} >
+      <div className={`flex w-[90%] justify-center flex-col items-center absolute ${!showResult?"top-20":"top-3"}`} >
           <SearchBar setFocusInSearch={setFocusInSearch} setSearch = {setSearch} search={search} handleSubmit={handleSubmit} border="border"/>
           <Suggestion visibility={focusInSearch}/>
       </div>
