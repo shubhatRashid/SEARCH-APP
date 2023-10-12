@@ -4,7 +4,7 @@ const SearchBar = ({setFocusInSearch,border,setSearch,handleSubmit,search}) => {
   return (
     <div className='m-[1%] w-[100%]'>
       <form className='w-full flex justify-center' onSubmit={handleSubmit}>
-        <div className={`rounded-xl w-[40%] flex justify-center items-center bg-white p-[0.5%] ${border}`}>
+        <div className={`rounded-xl w-[60%] flex justify-center items-center bg-white p-[0.5%] ${border}`}>
             <input 
                 value={search}
                 type="text" 

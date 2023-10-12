@@ -4,6 +4,7 @@ import FilterDiv from '../../components/subComponents/FilterDiv'
 import { Header } from '../../components/mainComponents'
 
 const SearchResult = ({filteredData,setFilteredData,searchData}) => {
+
   return (
     <div className='bg-white p-[2%] pt-[10%]'>
           <p className='text-4xl font-sans'>Search Results</p>
@@ -13,7 +14,7 @@ const SearchResult = ({filteredData,setFilteredData,searchData}) => {
             <FilterDiv filteredData={filteredData} setFilteredData={setFilteredData}/>
 
             {/* PRODUCTS DIV */}
-            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 grid-flow-row gap-5'>
+            <div className='grid grid-cols-2 lg:grid-cols-4 grid-flow-row gap-5'>
              { filteredData.map((product) => (
                 <ProductCard key={product.id} details= {product} />
               ))}
