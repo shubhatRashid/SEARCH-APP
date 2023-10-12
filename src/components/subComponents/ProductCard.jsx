@@ -15,13 +15,13 @@ const ProductCard = ({details}) => {
 
   return (
     <div className=' m-[2%] p-[4%] rounded flex flex-col gap-2 justify-end items-center font-sans bg-white border rounded relative max-h-[400px]'>
-        <div className='absolute top-2 right-2 fill-current '>
+        <div className='absolute z-10 top-2 right-2 fill-current '>
            <button onClick={changeColor} >{likeColor}</button>
         </div>
         <div className='relative'>
-            <img className='bg-white ' src={details.images[0]} />
-            <div className='absolute z-10 flex items-center justify-center bottom-0 bg-blue-100 w-full h-[20%] font-serif opacity-0 hover:opacity-75'>
-                <button>
+            <img className='bg-white' src={details.images[0]} />
+            <div className='absolute z-10 flex flex-col items-center justify-end bottom-0  w-full h-full font-serif opacity-0 hover:opacity-75'>
+                <button className='bg-blue-100 h-[20%] w-full bottom-0'>
                     View Product
                 </button>
             </div>

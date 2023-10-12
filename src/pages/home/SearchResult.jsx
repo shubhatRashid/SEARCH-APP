@@ -13,7 +13,7 @@ const SearchResult = ({filteredData,setFilteredData,searchData}) => {
             <FilterDiv filteredData={filteredData} setFilteredData={setFilteredData}/>
 
             {/* PRODUCTS DIV */}
-            <div className='grid grid-cols-3 lg:grid-cols-5 grid-flow-row gap-5'>
+            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 grid-flow-row gap-5'>
              { filteredData.map((product) => (
                 <ProductCard key={product.id} details= {product} />
               ))}
