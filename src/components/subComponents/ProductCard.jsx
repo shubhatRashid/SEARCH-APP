@@ -18,8 +18,15 @@ const ProductCard = ({details}) => {
         <div className='absolute top-2 right-2 fill-current '>
            <button onClick={changeColor} >{likeColor}</button>
         </div>
+        <div className='relative'>
+            <img className='bg-white ' src={details.images[0]} />
+            <div className='absolute z-10 flex items-center justify-center bottom-0 bg-blue-100 w-full h-[20%] font-serif opacity-0 hover:opacity-75'>
+                <button>
+                    View Product
+                </button>
+            </div>
+        </div>
 
-        <img className='bg-white ' src={details.images[0]} />
         <div className='flex w-[100%] justify-start px-[5%]'>
             <p className='text-xs capitalize m-[1%] '>RS {details.title}</p>
         </div>
@@ -35,7 +42,6 @@ const ProductCard = ({details}) => {
             }
             <p className='text-sm'>{`(${Math.floor(Math.random() * 100)})`}</p>    
         </div> 
-        
         
     </div>
   )
